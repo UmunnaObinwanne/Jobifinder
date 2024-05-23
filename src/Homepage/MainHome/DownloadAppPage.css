@@ -1,0 +1,9 @@
+ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust the gap as needed */
+}
+
+.material-icons {
+  color: rgb(0, 0, 0); /* Customize the icon color if needed */
+}

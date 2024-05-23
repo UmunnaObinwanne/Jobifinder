@@ -1,0 +1,21 @@
+/* UserChoice.css */
+.svg-img {
+  width: 200px !important; /* Increase the width of the image */
+  height: auto !important; /* Maintain aspect ratio */
+}
+
+.card {
+  flex: 0 1 calc(50% - 1rem); /* Ensure cards take up half the width with some gap */
+  margin-bottom: 1rem; /* Add some bottom margin */
+  max-width: 100%; /* Ensure card doesn't exceed container width */
+  display: flex; /* Ensure flex properties apply correctly */
+ 
+}
+
+.card > figure {
+  flex: 0 0 50%; /* Each card should take up half the width */
+}
+
+.card-body {
+  flex: 1; /* Allow the card body to expand to fill remaining space */
+}

@@ -1,0 +1,52 @@
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #ffffff;
+}
+
+.svg-icon circle {
+  stroke: #ffffff;
+  stroke-width: 1;
+}
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+
+.svg-dropdown path,
+.svg-dropdown polygon,
+.svg-dropdown rect {
+  fill: #000000;
+}
+
+.svg-dropdown circle {
+  stroke: #000000;
+  stroke-width: 1;
+}
+
+.svg-dropdown {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info p {
+  margin: 0;
+  margin-right: 2px; /* Adjust the margin as needed */
+}
+
