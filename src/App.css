@@ -10,7 +10,7 @@ body {
 #root {
 
   min-height: 100vh; /* Ensure the app takes up at least the full viewport height */
-  margin: 20px; /* Adjust the margin as needed */
+ 
 }
 
 /* Optionally, apply styles to specific elements within your app */

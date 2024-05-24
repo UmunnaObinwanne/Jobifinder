@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./NavBar.css";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Contexts/LoginContext";
 
 export default function Navbar() {
   // Creating Responsive Menu
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,6 +19,12 @@ export default function Navbar() {
 
   // Handling Auth State
   const { currentUser, loading, logOut } = useAuth();
+
+  //Handling Logout
+  function handleLogout() {
+    logOut();
+    navigate("/");
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -80,7 +87,7 @@ export default function Navbar() {
               Contact
             </Link>
             <Link
-              to="/employers"
+              to="/dashboard"
               className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600"
             >
               Employers
@@ -100,7 +107,7 @@ export default function Navbar() {
                   {isDropdownOpen && (
                     <ul className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 absolute right-0">
                       <li>
-                        <button onClick={logOut}>Sign Out</button>
+                        <button onClick={handleLogout}>Sign Out</button>
                       </li>
                       <li>
                         <a href="/profile">Profile</a>

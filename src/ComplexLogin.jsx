@@ -27,9 +27,9 @@ const Login = () => {
         const userRole = docSnap.data().role;
         console.log(userRole);
         if (userRole === "employer") {
-          navigate("/dashboard"); // Adjusted path
+          navigate("/");
         } else if (userRole === "job_seeker") {
-          navigate("/"); // Adjusted path
+          navigate("/");
         }
       }
     } catch (error) {
@@ -38,6 +38,7 @@ const Login = () => {
           setError("Invalid Credential");
           break;
         default:
+          // Handle other error cases if needed
           console.error("Unhandled error:", error);
       }
     }

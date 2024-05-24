@@ -1,39 +1,48 @@
 import { useAuth } from "../Contexts/LoginContext";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  // State for form
   const [username, setUsername] = useState("");
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("job_seeker");
   const [error, setError] = useState("");
 
   const { signUp } = useAuth();
+  const navigate = useNavigate();
 
-  // SignUp function
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     try {
-      await signUp(username, email, password);
+      console.log("Starting sign up process");
+      const user = await signUp(username, email, password, fullname, role);
 
-      // Reset form fields
       setUsername("");
       setFullname("");
       setEmail("");
       setPassword("");
+      setRole("job_seeker");
       setError("");
 
-      console.log("User signed up and profile updated");
+      if (role === "employer") {
+        navigate("/dashboard");
+      } else if (role === "job_seeker") {
+        navigate("/jobseeker");
+      }
+
+      console.log("User signed up successfully:", user);
+      console.log("Full Name:", fullname);
+      console.log("Role:", role);
     } catch (error) {
       switch (error.code) {
         case "auth/email-already-in-use":
           setError("Email already in use. Try another email or log in");
           break;
         default:
-          console.error("unhandled error", error);
+          console.error("Unhandled error", error);
       }
 
       console.error("Error signing up:", error);
@@ -52,15 +61,15 @@ const SignUp = () => {
               <div className="space-y-4 md:space-y-6">
                 <div>
                   <label
-                    htmlFor="name"
+                    htmlFor="fullname"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your full name
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    id="name"
+                    name="fullname"
+                    id="fullname"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Emelia Erickson"
                     value={fullname}
@@ -121,6 +130,26 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                </div>
+                <div>
+                  <label
+                    htmlFor="role"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Role
+                  </label>
+                  <select
+                    name="role"
+                    id="role"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    required
+                  >
+                    <option value="job_seeker">Job Seeker</option>
+                    <option value="employer">Employer</option>
+                    {/* Add more roles as needed */}
+                  </select>
                 </div>
                 <button
                   type="submit"
