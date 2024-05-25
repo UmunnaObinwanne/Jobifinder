@@ -9,6 +9,10 @@ import ForeverDashboard from "./ForeverDashboard";
 import ProtectedRoute from "./ProtectedRoute"; // Import the ProtectedRoute component
 import JobSeekerDashboard from "./JobSeeker";
 
+import JobPostingForm from "./JobPostingEditor/JobPostingForm";
+import FullJobListing from "./JobListingPage/FullJobListingPage/FullJobListing";
+import IndividualJobListing from "./JobListingPage/FullJobListingPage/IndividualJobListing";
+
 function App() {
   return (
     <>
@@ -17,14 +21,17 @@ function App() {
           <Route index element={<ParentHomeLayout />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/job-listings" element={<FullJobListing />} />
+          <Route path="job-listings/:id" element={<IndividualJobListing />} />
+        </Route>
+        {/* Define protected routes */}
+        <Route element={<ProtectedRoute requiredRole="employer" />}>
+          <Route path="/dashboard" element={<ForeverDashboard />} />
+          <Route path="/post-job" element={<JobPostingForm />} />
+        </Route>
 
-          {/* Define protected routes */}
-          <Route element={<ProtectedRoute requiredRole="employer" />}>
-            <Route path="/dashboard" element={<ForeverDashboard />} />
-          </Route>
-          <Route element={<ProtectedRoute requiredRole="job_seeker" />}>
-            <Route path="/jobseeker" element={<JobSeekerDashboard />} />
-          </Route>
+        <Route element={<ProtectedRoute requiredRole="job_seeker" />}>
+          <Route path="/jobseeker" element={<JobSeekerDashboard />} />
         </Route>
       </Routes>
     </>

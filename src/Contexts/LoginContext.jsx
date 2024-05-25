@@ -14,6 +14,10 @@ import {
   setDoc,
   getDoc,
   enableIndexedDbPersistence,
+  addDoc,
+  collection,
+  getDocs,
+  Timestamp,
 } from "firebase/firestore";
 
 // Firebase configuration (replace with your own config)
@@ -132,9 +136,51 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const postJob = async (jobData) => {
+    console.log("postJob function started");
+    try {
+      const jobWithMetadata = {
+        ...jobData,
+        userId: currentUser.uid, // Add userId to job data
+        createdAt: Timestamp.now(), // Add createdAt timestamp
+      };
+      await addDoc(collection(db, "jobPostings"), jobWithMetadata);
+      console.log("Job posted successfully");
+      alert("Job posted successfully");
+    } catch (error) {
+      console.error("Error posting job:", error);
+      alert("Error posting job");
+    }
+  };
+
+  const fetchJobs = async () => {
+    console.log("fetchJobs function started");
+    try {
+      const querySnapshot = await getDocs(collection(db, "jobPostings"));
+      const jobs = [];
+      querySnapshot.forEach((doc) => {
+        jobs.push({ id: doc.id, ...doc.data() });
+      });
+      console.log("Jobs fetched successfully");
+      return jobs;
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ currentUser, currentUserRole, loading, signUp, logIn, logOut }}
+      value={{
+        currentUser,
+        currentUserRole,
+        loading,
+        signUp,
+        logIn,
+        logOut,
+        postJob,
+        fetchJobs,
+      }} // Added postJob
     >
       {children}
     </AuthContext.Provider>

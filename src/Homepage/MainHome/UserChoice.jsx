@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import EmployerSVG from "../../assets/undraw_updated_resume_re_7r9j.svg";
 import CandidateSVG from "../../assets/undraw_working_remotely_re_6b3a.svg";
 import "./UserChoice.css"; // Import CSS file for styling
@@ -16,7 +17,9 @@ function UserChoice() {
               Find professionals from around the world and across all skills.
             </p>
             <div className="card-actions justify-end">
-              <button className="btn  bg-teal-500">Post jobs for Free</button>
+              <Link to="/post-job">
+                <button className="btn  bg-teal-500">Post jobs for Free</button>
+              </Link>
             </div>
           </div>
         </div>

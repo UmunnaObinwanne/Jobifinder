@@ -77,7 +77,7 @@ export default function Sidebar() {
               </a>
             </li>
             <li>
-              <a className="" href="#">
+              <Link to="/post-job">
                 <button
                   className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                   type="button"
@@ -99,7 +99,7 @@ export default function Sidebar() {
                     post new job
                   </p>
                 </button>
-              </a>
+              </Link>
             </li>
           </ul>
           <ul className="mb-4 flex flex-col gap-1">
