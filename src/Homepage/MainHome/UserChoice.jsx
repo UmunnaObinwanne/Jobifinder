@@ -18,7 +18,9 @@ function UserChoice() {
             </p>
             <div className="card-actions justify-end">
               <Link to="/post-job">
-                <button className="btn  bg-teal-500">Post jobs for Free</button>
+                <button className="btn  bg-teal-500 text-white-800">
+                  Post jobs for Free
+                </button>
               </Link>
             </div>
           </div>
@@ -31,10 +33,14 @@ function UserChoice() {
           </figure>
           <div className="card-body">
             <h2 className="card-title">For Candidate</h2>
-            <p>Build your professional profile, find new job opportunities.</p>
+            <p className="text-teal-800">
+              Build your professional profile, find new job opportunities.
+            </p>
             <div className="card-actions justify-end">
               <Link to="/job-listings">
-                <button className="btn  bg-teal-500">Browse Jobs</button>
+                <button className="btn  text-teal-800 bg-white-500">
+                  Browse Jobs
+                </button>
               </Link>
             </div>
           </div>
