@@ -7,7 +7,7 @@ function UserChoice() {
   return (
     <div className="flex flex-row justify-evenly flex-wrap gap-5 bg-green-100">
       <div>
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card card-side  shadow-xl">
           <figure>
             <img className="svg-img" src={EmployerSVG} alt="Employer" />
           </figure>
@@ -25,15 +25,13 @@ function UserChoice() {
         </div>
       </div>
       <div>
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card card-side  shadow-xl">
           <figure>
             <img className="svg-img" src={CandidateSVG} alt="Candidate" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">For Candidate</h2>
-            <p className="text-teal-800">
-              Build your professional profile, find new job opportunities.
-            </p>
+            <p>Build your professional profile, find new job opportunities.</p>
             <div className="card-actions justify-end">
               <Link to="/job-listings">
                 <button className="btn  text-teal-800 bg-white-500">
