@@ -7,7 +7,6 @@ function Hero() {
         <Link
           to="/job-listings"
           rel="noreferrer"
-          href="#"
           className="mx-auto flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-all hover:bg-blue-200"
         >
           <svg
@@ -25,9 +24,9 @@ function Hero() {
           </p>
         </Link>
         <h1 className="mt-8 max-w-sm bg-gradient-to-br from-gray-500 via-teal-500 to-gray-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">
-          Find Your Next Blue-Collar Job
+          Find Your Next Blue-Collar Job Within Days
         </h1>
-        <span className="mt-8 max-w-lg text-center text-xl leading-relaxed text-gray-800">
+        <span className="mt-8 max-w-lg text-center text-xl leading-relaxed text-teal-800">
           Explore top job listings tailored for skilled blue-collar workers.
           Connect with employers and secure your future today.
         </span>
