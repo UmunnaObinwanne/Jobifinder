@@ -18,9 +18,7 @@ function UserChoice() {
             </p>
             <div className="card-actions justify-end">
               <Link to="/post-job">
-                <button className="btn  bg-teal-500 text-white-800">
-                  Post jobs for Free
-                </button>
+                <button className="btn  ">Post jobs for Free</button>
               </Link>
             </div>
           </div>
