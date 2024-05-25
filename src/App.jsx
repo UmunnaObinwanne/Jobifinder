@@ -23,11 +23,6 @@ function App() {
           <Route index element={<ParentHomeLayout />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/job-listings" element={<FullJobListing />} />
-          <Route
-            path="job-listings/:id"
-            element={<IndividualJobDetailPage />}
-          />
         </Route>
         {/* Define protected routes */}
         <Route element={<ProtectedRoute requiredRole="employer" />}>
@@ -37,6 +32,11 @@ function App() {
 
         <Route element={<ProtectedRoute requiredRole="job_seeker" />}>
           <Route path="/jobseeker" element={<JobSeekerDashboard />} />
+          <Route path="/job-listings" element={<FullJobListing />} />
+          <Route
+            path="job-listings/:id"
+            element={<IndividualJobDetailPage />}
+          />
         </Route>
       </Routes>
     </>
