@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
+import { auth, db } from "../FirebaseUtilities/FirebaseConfig";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -9,40 +8,16 @@ import {
   updateProfile,
 } from "firebase/auth";
 import {
-  getFirestore,
   doc,
   setDoc,
   getDoc,
-  enableIndexedDbPersistence,
   addDoc,
   collection,
   getDocs,
   Timestamp,
+  query,
+  orderBy,
 } from "firebase/firestore";
-
-// Firebase configuration (replace with your own config)
-const firebaseConfig = {
-  apiKey: "AIzaSyCrIBefg4NRgx7yWPzowmrypfIIp9WucbA",
-  authDomain: "jobifinder-18aca.firebaseapp.com",
-  projectId: "jobifinder-18aca",
-  storageBucket: "jobifinder-18aca.appspot.com",
-  messagingSenderId: "84465194653",
-  appId: "1:84465194653:web:90c9de53eab21793cba674",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// Enable offline persistence
-enableIndexedDbPersistence(db).catch((err) => {
-  if (err.code === "failed-precondition") {
-    console.log("Failed to enable offline persistence. Multiple tabs open?");
-  } else if (err.code === "unimplemented") {
-    console.log("Offline persistence is not supported by the current browser.");
-  }
-});
 
 // Create a context
 export const AuthContext = createContext();
@@ -156,7 +131,11 @@ export const AuthProvider = ({ children }) => {
   const fetchJobs = async () => {
     console.log("fetchJobs function started");
     try {
-      const querySnapshot = await getDocs(collection(db, "jobPostings"));
+      const q = query(
+        collection(db, "jobPostings"),
+        orderBy("createdAt", "desc")
+      );
+      const querySnapshot = await getDocs(q);
       const jobs = [];
       querySnapshot.forEach((doc) => {
         jobs.push({ id: doc.id, ...doc.data() });
@@ -180,7 +159,7 @@ export const AuthProvider = ({ children }) => {
         logOut,
         postJob,
         fetchJobs,
-      }} // Added postJob
+      }}
     >
       {children}
     </AuthContext.Provider>

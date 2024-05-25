@@ -11,7 +11,9 @@ import JobSeekerDashboard from "./JobSeeker";
 
 import JobPostingForm from "./JobPostingEditor/JobPostingForm";
 import FullJobListing from "./JobListingPage/FullJobListingPage/FullJobListing";
-import IndividualJobListing from "./JobListingPage/FullJobListingPage/IndividualJobListing";
+//import IndividualJobListing from "./JobListingPage/FullJobListingPage/IndividualJobListing";
+
+import IndividualJobDetailPage from "./JobListingPage/FullJobListingPage/IndividualJobDetailPage";
 
 function App() {
   return (
@@ -22,7 +24,10 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/job-listings" element={<FullJobListing />} />
-          <Route path="job-listings/:id" element={<IndividualJobListing />} />
+          <Route
+            path="job-listings/:id"
+            element={<IndividualJobDetailPage />}
+          />
         </Route>
         {/* Define protected routes */}
         <Route element={<ProtectedRoute requiredRole="employer" />}>

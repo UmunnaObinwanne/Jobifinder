@@ -33,7 +33,9 @@ function UserChoice() {
             <h2 className="card-title">For Candidate</h2>
             <p>Build your professional profile, find new job opportunities.</p>
             <div className="card-actions justify-end">
-              <button className="btn  bg-teal-500">Upload your CV</button>
+              <Link to="/job-listings">
+                <button className="btn  bg-teal-500">Browse Jobs</button>
+              </Link>
             </div>
           </div>
         </div>

@@ -75,6 +75,12 @@ export default function Navbar() {
             } lg:space-x-4 lg:mt-0 mt-4 flex flex-col items-center text-md`}
           >
             <Link
+              to="/post-job"
+              className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600"
+            >
+              Post a job
+            </Link>
+            <Link
               to="/"
               className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600"
             >
