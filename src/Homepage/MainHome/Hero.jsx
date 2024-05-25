@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Hero() {
   return (
     <>
-      <div className="relative my-20 flex w-full flex-col items-center sm:mt-14 bg-base-100 shadow-md">
+      <div className="relative my-20 flex w-full flex-col items-center sm:mt-14 bg-white-100 shadow-md">
         <Link
           to="/job-listings"
           rel="noreferrer"
