@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import JobListingCard from "./JobListingCard";
 import { useAuth } from "../../Contexts/LoginContext";
+import Loader from "../../Reuseable-Components/Loader";
 
 const JobListings = () => {
   const { fetchJobs } = useAuth();
@@ -23,7 +24,7 @@ const JobListings = () => {
   }, [fetchJobs]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (

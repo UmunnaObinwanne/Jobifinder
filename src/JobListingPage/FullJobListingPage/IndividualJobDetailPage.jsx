@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../FirebaseUtilities/FirebaseConfig";
+import Loader from "../../Reuseable-Components/Loader";
 
 const IndividualJobDetailPage = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ const IndividualJobDetailPage = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (!job) {

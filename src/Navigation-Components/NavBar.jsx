@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./NavBar.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Contexts/LoginContext";
+import Loader from "../Reuseable-Components/Loader";
 
 export default function Navbar() {
   // Creating Responsive Menu
@@ -23,11 +24,11 @@ export default function Navbar() {
   //Handling Logout
   function handleLogout() {
     logOut();
-    navigate("/");
+    navigate("/login");
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   let capitalizedName = "";
