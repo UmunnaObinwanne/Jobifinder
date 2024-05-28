@@ -82,7 +82,7 @@ export default function Navbar() {
               Post a job
             </Link>
             <Link
-              to="/"
+              onClick={handleLogout}
               className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600"
             >
               About
