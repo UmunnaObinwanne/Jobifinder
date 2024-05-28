@@ -114,7 +114,9 @@ export default function Navbar() {
                   {isDropdownOpen && (
                     <ul className="menu dropdown-content  rounded-box w-52 mb-10 p-1 absolute right-0">
                       <li>
-                        <Link onClick={handleLogout}>Sign Out</Link>
+                        <Link onClick={handleLogout}>
+                          <button>Sign Out</button>
+                        </Link>
                       </li>
                     </ul>
                   )}
