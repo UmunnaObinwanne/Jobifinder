@@ -100,20 +100,18 @@ export default function Navbar() {
               Employers
             </Link>
             {currentUser ? (
-              <div className="user-info flex items-center space-x-2">
-                <p className="m-0">
-                  {`Welcome ${capitalizedName}`}
-                  <Link
-                    onClick={handleLogout}
-                    className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600"
-                  >
-                    Logout
-                  </Link>
-                </p>
+              <div className="user-info flex justify-between items-center sm: flex-col sm: gap-5">
+                <p className="m-0">{`Welcome ${capitalizedName}`}</p>
+                <Link
+                  onClick={handleLogout}
+                  className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 ml-4 hover:bg-green-600"
+                >
+                  Logout
+                </Link>
               </div>
             ) : (
               <Link
-                className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600"
+                className="bg-teal-500 text-white rounded-md px-3 py-1 mb-2 lg:mb-0 hover:bg-green-600 "
                 to="/login"
               >
                 Login/Register
